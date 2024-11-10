@@ -3,12 +3,18 @@
     "bot_greeting": "Oh hello there, I can analyse your outfit, just click on the button up there.",
     "capture_button": "Check Outfit",
     "analyzing": "Analyzing...",
-    "countdown_message": "In {count} seconds...",
-    "imageTaken": "Image taken!",
+    "request_permissions": "For getting more information about you, please give me access to your camera and location when asked for it, otherwise I cannot analyse your outfit.",
+    "countdown_message": "Get ready to show your outfit. Taking Picture in {count}...",
+    "camera_permission_denied_response": "Hey! I want to see you, give me access to your camera, I promise I won't harm you... Please grant the permission for your camera in your browser.",
+    "camera_not_found_response": "Does this really exists these days? A device without camera! Lucky me, my job is done here.",
+    "camera_constrained_not_satisfied_response": "Hey there is problem with a camera, I pretend to not control your device, so please check your camera settings",
+    "allow_access": "Allow Access",
+    "imageTaken": "Got an image of you, analyzing outfit now...",
+    "geolocation_permission_denied_response": "oh no noo nooooo! So much work and you didn't give me the permission for your location. What are you scared of? You can trust me! Please grant the permission for your location in your browser.",
     "outfit_description": "The outfit consists of:\n",
     "outfit_item": "- {item} with a probability of {probability}%\n",
     "weather_prompt": "The current weather is {weatherDescription} with {temperature}°C. The user is wearing: {outfit}. Does this outfit fit the weather?",
     "analysis_in_progress": "Analysis in progress...",
-    "error": "An error occurred"
+    "error": "This is unusual. Something broke. I'm not sure what just happened. Maybe refresh the website and try agein?"
   }
   

@@ -15,10 +15,6 @@
     <div class="container mt-5">
         <h1 class="text-center" data-i18n="title"></h1>
         <div class="row justify-content-center mt-4">
-            <!-- Timer Anzeige -->
-            <div id="timer" class="text-center col-12 col-md-6"></div>
-        </div>
-        <div class="row justify-content-center mt-4">
             <!-- Button für Outfit Check -->
             <div class="col-12 col-md-6 text-center">
                 <button id="captureBtn" class="btn btn-primary btn-lg w-100" data-i18n="capture_button"></button>
@@ -38,9 +34,12 @@
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-12 col-md-8 col-lg-6">
-                <div class="bot-message d-flex align-items-center">
-                    <img src="assets/images/robot-solid.svg" alt="Bot Icon" class="bot-icon mr-3" />
-                    <div id="bubbleMessage" class="bubble" data-i18n="bot_greeting"></div>
+                <div class="bot-message d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <img src="assets/images/robot-solid.svg" alt="Bot Icon" class="bot-icon mr-3" />
+                        <div id="bubbleMessage" class="bubble" data-i18n="bot_greeting"></div>
+                    </div>
+                    <button id="retryButton" class="btn btn-primary" style="display:none;" data-i18n="allow_access"></button>
                 </div>
             </div>
         </div>
