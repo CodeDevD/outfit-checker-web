@@ -1,5 +1,5 @@
 let currentLanguage = 'de';
-const i18nPath = '/assets/i18n/';
+const i18nPath = 'assets/i18n/';
 
 let translations = {};
 
