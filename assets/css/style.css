@@ -1,4 +1,3 @@
-/* Grundlegende Styles für das Layout */
 body {
     display: flex;
     flex-direction: column;
@@ -57,3 +56,49 @@ button {
     width: 100%;
     height: 100%;
 }
+
+#feedback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.bot-message {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.bot-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.bubble {
+    background-color: #28a745;
+    color: white;
+    border-radius: 15px;
+    padding: 15px 25px;
+    margin-left: 10px;
+    max-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: bubbleAnimation 0.5s ease-out;
+}
+
+@keyframes bubbleAnimation {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+

@@ -4,8 +4,8 @@ const isDevelopment = window.location.hostname === 'localhost' || window.locatio
 
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
-const feedbackDiv = document.getElementById('feedback');
 const captureBtn = document.getElementById('captureBtn');
+const bubbleMsg = document.getElementById('bubbleMessage');
 
 const savedLang = localStorage.getItem('language');
 const userLang = savedLang || navigator.language.slice(0, 2);
@@ -112,7 +112,7 @@ function takePictureWithAnimation(stream) {
     setTimeout(async () => {
         const imageData = takePicture();
         captureAnimation.style.display = 'none'; 
-        feedbackDiv.textContent = "Bild aufgenommen!";
+        showBotFeedback(getText('imageTaken'));
 
         video.style.display = 'none';
         canvas.style.display = 'block';
@@ -261,15 +261,19 @@ async function checkOutfitWithLLM(outfitAnalysis, weatherInfo) {
     return data;
 }
 
+function showBotFeedback(message) {
+  bubbleMsg.textContent = message;
+}
+
 async function checkOutfit() {
-    feedbackDiv.textContent = getText('analysis_in_progress');
+    showBotFeedback(getText('analysis_in_progress'));
 
     const imageData = await captureImageWithCountdown();
     const outfitAnalysis = await analyzeOutfit(imageData);
     const weatherInfo = await getWeather();
     const feedback = await checkOutfitWithLLM(outfitAnalysis, weatherInfo);
 
-    feedbackDiv.textContent = feedback;
+    showBotFeedback(feedback); 
 }
 
 captureBtn.addEventListener('click', checkOutfit);

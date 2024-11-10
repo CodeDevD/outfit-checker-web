@@ -1,6 +1,7 @@
 {
     "title": "Outfit Checker",
-    "captureButton": "Check Outfit",
+    "bot_greeting": "Oh hello there, I can analyse your outfit, just click on the button up there.",
+    "capture_button": "Check Outfit",
     "analyzing": "Analyzing...",
     "countdown_message": "In {count} seconds...",
     "imageTaken": "Image taken!",

@@ -1,6 +1,7 @@
 {
     "title": "Outfit Checker",
-    "captureButton": "Outfit prüfen",
+    "bot_greeting": "Oh Hallo, ich kann dein Outfit analysieren, klicke einfach auf den Button da oben und ich mache ein Foto von dir,",
+    "capture_button": "Outfit prüfen",
     "analyzing": "Analyse läuft...",
     "countdown_message": "In {count} Sekunden...",
     "imageTaken": "Bild aufgenommen!",
