@@ -1,0 +1,13 @@
+{
+    "title": "Outfit Checker",
+    "captureButton": "Outfit prüfen",
+    "analyzing": "Analyse läuft...",
+    "countdown_message": "In {count} Sekunden...",
+    "imageTaken": "Bild aufgenommen!",
+    "outfit_description": "Das Outfit besteht aus:\n",
+    "outfit_item": "- {item} mit einer Wahrscheinlichkeit von {probability}%\n",
+    "weather_prompt": "Das aktuelle Wetter ist {weatherDescription} mit {temperature}°C. Der Benutzer trägt: {outfit}. Passt dieses Outfit zum Wetter?",
+    "analysis_in_progress": "Analyse läuft...",
+    "error": "Fehler aufgetreten"
+  }
+  
