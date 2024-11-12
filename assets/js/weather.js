@@ -1,8 +1,7 @@
 import { getLocation } from './geolocation.js';
 import i18n from './i18n.js';
 import { showBotFeedback } from './ui.js';
-
-const proxyUrl = "https://outfit-checker-proxy.vercel.app";
+import { proxyUrl } from './config.js';
 
 class WeatherHandler {
     constructor(proxyUrl) {
