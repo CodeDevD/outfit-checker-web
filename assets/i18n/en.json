@@ -4,6 +4,7 @@
     "capture_button": "Check Outfit",
     "analyzing": "Analyzing...",
     "request_permissions": "For getting more information about you, please give me access to your camera and location when asked for it, otherwise I cannot analyse your outfit.",
+    "camera_preview": "Camera preview",
     "countdown_message": "Get ready to show your outfit. Taking Picture in {count}...",
     "camera_permission_denied_response": "Hey! I want to see you, give me access to your camera, I promise I won't harm you... Please grant the permission for your camera in your browser.",
     "camera_not_found_response": "Does this really exists these days? A device without camera! Lucky me, my job is done here.",

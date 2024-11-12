@@ -4,6 +4,7 @@
     "capture_button": "Outfit prüfen",
     "analyzing": "Analyse läuft...",
     "request_permissions": "Ich benötige deine Kamera- und Lokalisationsberechtigung. Bitte erteile die Berechtigungen, wenn danach gefragt wird. Ansonsten mache ich nicht weiter.",
+    "camera_preview": "Kameravorschau",
     "countdown_message": "Mach dich Bereit! In {count}...",
     "camera_permission_denied_response": "Hey! Ich möchte dich sehen, gib mir Zugriff auf deine Kamera, ich verspreche, ich werde dir nichts tun. Setze die Kameraberechtigung über deinen Browser bitte. ",
     "camera_not_found_response": "Gibt es das heutzutage wirklich? Ein Gerät ohne Kamera! Ich habe Glück, mein Job ist hier erledigt.",
