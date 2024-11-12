@@ -13,8 +13,15 @@
     "geolocation_permission_denied_response": "oh no noo nooooo! So much work and you didn't give me the permission for your location. What are you scared of? You can trust me! Please grant the permission for your location in your browser.",
     "outfit_description": "The outfit consists of:\n",
     "outfit_item": "- {item} with a probability of {probability}%\n",
-    "weather_prompt": "The current weather is {weatherDescription} with {temperature}°C. The user is wearing: {outfit}. Does this outfit fit the weather?",
+    "weather_prompt": "The current weather is {weatherDescription} with {temperature}°C. I am wearing: {outfit}. Does my outfit fit for the weather?",
     "analysis_in_progress": "Analysis in progress...",
+    "current_weather": "Currently",
+    "morning": "Morning",
+    "noon": "Noon",
+    "evening": "Evening",
+    "night": "Night",
+    "no_weather_data_available": "No data available",
+    "new_forecast_wait_for_assistant": "One Moment, I am analyzing...",
     "error": "This is unusual. Something broke. I'm not sure what just happened. Maybe refresh the website and try agein?"
   }
   

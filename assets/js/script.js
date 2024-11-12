@@ -4,10 +4,16 @@ import { CameraError, GeolocationPermissionError } from './errors.js';
 const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
 const video = document.getElementById('video');
+const videoOverlay = document.getElementById('video-overlay');
 const canvas = document.getElementById('canvas');
 const captureBtn = document.getElementById('captureBtn');
 const bubbleMsg = document.getElementById('bubbleMessage');
 const retryButton = document.getElementById('retryButton');
+const showWeatherButton = document.getElementById('weather-toggle-button');
+const weatherContainer = document.getElementById('weather-container');
+const forecastContainer = document.getElementById('hourly-forecast');
+
+let lastOutfitAnalysis;
 
 const savedLang = localStorage.getItem('language');
 const userLang = savedLang || navigator.language.slice(0, 2);
@@ -75,6 +81,7 @@ function handleCameraError(error) {
 async function startCamera() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    videoOverlay.style.opacity = '0';
     video.srcObject = stream;
     return stream;
   } catch (error) {
@@ -155,6 +162,9 @@ function takePictureWithAnimation(stream) {
 
 async function captureImageWithCountdown() {
   let stream = await startCamera();
+
+  video.style.display = 'block';
+  canvas.style.display = 'none';
 
   const imageData = await new Promise((resolve) => {
     startCountdown(() => {
@@ -256,20 +266,56 @@ async function analyzeOutfit(imageData) {
   return outfit_description;
 }
 
+showWeatherButton.addEventListener('click', () => {
+  const isVisible = weatherContainer.style.display === 'block';
+  weatherContainer.style.display = isVisible ? 'none' : 'block';
+}); 
+
 async function getWeather() {
   const { lat, lon } = await getLocation();
 
-  const response = await fetch(`${proxyUrl}/api/proxyWeather.js`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ lat, lon }),
-  });
+  try {
+    const currentResponse = await fetch(`${proxyUrl}/api/proxyWeather.js`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        lat,
+        lon,
+        type: 'current'
+      }),
+    });
 
-  const weatherData = await response.json();
-  return weatherData;
+    const forecastResponse = await fetch(`${proxyUrl}/api/proxyWeather.js`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        lat,
+        lon,
+        type: 'forecast'
+      }),
+    });
+
+    const [currentWeatherData, forecastWeatherData] = await Promise.all([
+      currentResponse.json(),
+      forecastResponse.json()
+    ]);
+
+    const combinedData = {
+      currentWeather: currentWeatherData,
+      forecast: forecastWeatherData,   
+    };
+
+    return combinedData;
+  } catch (error) {
+    console.error('Fehler beim Abrufen der Wetterdaten:', error);
+    throw error; // Fehler weitergeben
+  }
 }
+
 
 function getLocation() {
   return new Promise((resolve, reject) => {
@@ -333,9 +379,87 @@ async function checkPermissions() {
     return cameraGranted && locationGranted;
   } catch (error) {
     console.error('Error checking permissions:', error);
-    // Falls ein Fehler auftritt (z.B. ältere Browser ohne Permissions API), gib false zurück
     return false;
   }
+}
+
+function showWeatherElement(weatherData, title, highlight = false) {
+  if(!weatherData) {
+    const forecastItem = document.createElement('div');
+    forecastItem.className = 'forecast-item';
+    forecastItem.innerHTML = `
+      <h3>${timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1)}</h3>
+      <span>${getText('no_weather_data_available')}</span>
+    `;
+    forecastContainer.appendChild(forecastItem);
+  }
+
+  const temp = weatherData.main.temp.toFixed(1);
+  const weatherDescription = weatherData.weather[0].description;
+  const icon = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`;
+
+  const forecastItem = document.createElement('div');
+  if(highlight) {
+    forecastItem.className = 'forecast-item active';
+  } else {
+    forecastItem.className = 'forecast-item';
+  }
+  forecastItem.innerHTML = `
+    <h3>${title}</h3>
+    <span>${temp}°C</span>
+    <img src="${icon}" alt="${weatherDescription}">
+    <span>${weatherDescription}</span>
+  `;
+
+  forecastItem.addEventListener('click', async () => {
+    document.querySelectorAll('.forecast-item').forEach(item => item.classList.remove('active'));
+    forecastItem.classList.add('active');
+    showBotFeedback(getText('new_forecast_wait_for_assistant'));
+    const feedback = await checkOutfitWithLLM(lastOutfitAnalysis, weatherData);
+    showBotFeedback(feedback);
+  });
+
+  forecastContainer.appendChild(forecastItem);
+}
+
+function getWeatherForTime(hourlyData, targetTime) {
+  return hourlyData.find((hour) => {
+    const timeString = hour.dt_txt.split(' ')[1]; 
+    const hourString = timeString.substring(0, 5); 
+    return hourString === targetTime;
+  });
+}
+
+function displayDailyWeather(weatherInfo) {
+  const currentWeather = weatherInfo.currentWeather;
+  const forecast = weatherInfo.forecast;
+
+  const times = {
+    [getText('morning')]: '06:00',
+    [getText('noon')]: '12:00',
+    [getText('evening')]: '18:00',
+    [getText('night')]: '00:00'
+  };
+  
+  forecastContainer.innerHTML = '';
+
+  showWeatherElement(currentWeather, getText('current_weather'), true);
+
+  const currentHour = new Date().getHours();
+
+  const sortedTimes = Object.entries(times).sort(([keyA, timeA], [keyB, timeB]) => {
+    const hourA = parseInt(timeA.split(':')[0]);
+    const hourB = parseInt(timeB.split(':')[0]);
+
+    return (hourA >= currentHour ? hourA : hourA + 24) - (hourB >= currentHour ? hourB : hourB + 24);
+  });
+
+  sortedTimes.forEach(([timeOfDay, targetTime]) => {
+
+    const weatherData = getWeatherForTime(forecast.list, targetTime); 
+
+    showWeatherElement(weatherData, timeOfDay);
+  });
 }
 
 async function checkOutfit() {
@@ -352,17 +476,21 @@ async function checkOutfit() {
     if (error instanceof CameraError) {
       return;
     }
+    throw error;
   }
-  const outfitAnalysis = await analyzeOutfit(imageData);
+  lastOutfitAnalysis = await analyzeOutfit(imageData);
   let weatherInfo;
   try {
     weatherInfo = await getWeather();
+    displayDailyWeather(weatherInfo);
+    showWeatherButton.style.display = "block";  
   }catch (error) {
     if (error instanceof GeolocationPermissionError) {
       return;
     }
+    throw error;
   }
-  const feedback = await checkOutfitWithLLM(outfitAnalysis, weatherInfo);
+  const feedback = await checkOutfitWithLLM(lastOutfitAnalysis, weatherInfo.currentWeather);
 
   showBotFeedback(feedback);
 }

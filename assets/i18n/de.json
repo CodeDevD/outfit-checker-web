@@ -13,8 +13,15 @@
     "geolocation_permission_denied_response": "Oh nein, nein, neiiiiin! So viel Arbeit und du hast mir nicht die Erlaubnis für deinen Standort gegeben. Wovor hast du Angst? Du kannst mir vertrauen! Bitte erteile mir die Erlaubnis für deinen Standort in deinem Browser.",
     "outfit_description": "Das Outfit besteht aus:\n",
     "outfit_item": "- {item} mit einer Wahrscheinlichkeit von {probability}%\n",
-    "weather_prompt": "Das aktuelle Wetter ist {weatherDescription} mit {temperature}°C. Der Benutzer trägt: {outfit}. Passt dieses Outfit zum Wetter?",
+    "weather_prompt": "Das aktuelle Wetter ist {weatherDescription} mit {temperature}°C. Ich trage: {outfit}. Passt mein Outfit für das Wetter?",
     "analysis_in_progress": "Analyse läuft...",
+    "current_weather": "Aktuell",
+    "morning": "Morgens",
+    "noon": "Mittags",
+    "evening": "Abends",
+    "night": "Nachts",
+    "no_weather_data_available": "Keine Daten verfügbar",
+    "new_forecast_wait_for_assistant": "Einen Moment, Ich analysiere...",
     "error": "Das ist kommisch, irgendwas ist schiefgelaufen. Vielleicht probiere es erneut, indem du die Webseite neu lädst?"
   }
   

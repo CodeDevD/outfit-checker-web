@@ -20,10 +20,13 @@
                 <button id="captureBtn" class="btn btn-primary btn-lg w-100" data-i18n="capture_button"></button>
             </div>
         </div>
-        <div class="row justify-content-center mt-4">
+        <div id="video-container" class="position-relative">
             <!-- Video Anzeige -->
-            <div class="col-12 col-md-8 col-lg-6">
-                <video id="video" class="w-100" autoplay></video>
+            <video id="video" class="w-100" autoplay></video>
+
+            <!-- Video Overlay -->
+            <div id="video-overlay" class="position-absolute w-100 h-100 d-flex justify-content-center align-items-center text-white" style="z-index: 10;">
+                <p id="overlay-text" class="m-0">Kameravorschau</p>
             </div>
         </div>
         <div class="row justify-content-center mt-4">
@@ -32,8 +35,14 @@
                 <canvas id="canvas" class="w-100" style="display:none;"></canvas>
             </div>
         </div>
+        <button id="weather-toggle-button" style="display:none;">
+            <img src="https://api.iconify.design/mdi/weather-partly-cloudy.svg" alt="Wetter Icon">
+        </button>
         <div class="row justify-content-center mt-4">
             <div class="col-12 col-md-8 col-lg-6">
+                <div id="weather-container" style="display:none;">
+                    <div id="hourly-forecast"></div>
+                </div>
                 <div class="bot-message d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                         <img src="assets/images/robot-solid.svg" alt="Bot Icon" class="bot-icon mr-3" />
