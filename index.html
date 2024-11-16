@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,39 +8,62 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <select id="languageSelect">
-        <option value="de">Deutsch</option>
-        <option value="en">English</option>
-    </select>
-    <div class="container mt-5">
-        <h1 class="text-center" data-i18n="title"></h1>
-        <div class="row justify-content-center mt-4">
-            <!-- Button für Outfit Check -->
-            <div class="col-12 col-md-6 text-center">
-                <button id="captureBtn" class="btn btn-primary btn-lg w-100" data-i18n="capture_button"></button>
-            </div>
-        </div>
-        <div id="video-container" class="position-relative">
-            <!-- Video Anzeige -->
-            <video id="video" class="w-100" autoplay></video>
 
-            <!-- Video Overlay -->
-            <div id="video-overlay" class="position-absolute w-100 h-100 d-flex justify-content-center align-items-center text-white" style="z-index: 10;">
-                <p id="overlay-text" class="m-0" data-i18n="camera_preview"></p>
+<body>
+    <nav class="navbar navbar-dark bg-primary fixed-top w-100">
+        <div class="container d-flex justify-content-between align-items-center">
+            <button id="menuButton" class="navbar-toggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <span class="navbar-brand mx-auto">Outfit Checker</span>
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown">
+                    DE
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#" data-lang="de">Deutsch</a>
+                    <a class="dropdown-item" href="#" data-lang="en">English</a>
+                </div>
             </div>
         </div>
-        <div class="row justify-content-center mt-4">
-            <!-- Canvas für Feedback (unsichtbar) -->
-            <div class="col-12 col-md-8 col-lg-6">
-                <canvas id="canvas" class="w-100" style="display:none;"></canvas>
+    </nav>
+
+    <div id="sideMenu" class="side-menu">
+        <ul>
+            <li><a href="#" id="outfitCheckerLink">Outfit Checker</a></li>
+            <li><a href="#" id="aboutLink">About</a></li>
+            <li><a href="#" id="shareLink">Share</a></li>
+        </ul>
+    </div>
+
+    <div id="main-content">
+        <div class="container-fluid mt-5">
+            <div class="row justify-content-center mt-4">
+                <!-- Button für Outfit Check -->
+                <div class="col-12 col-md-6 text-center">
+                    <button id="captureBtn" class="btn btn-primary btn-lg w-100" data-i18n="capture_button"></button>
+                </div>
             </div>
-        </div>
-        <button id="weather-toggle-button" style="display:none;">
-            <img src="https://api.iconify.design/mdi/weather-partly-cloudy.svg" alt="Wetter Icon">
-        </button>
-        <div class="row justify-content-center mt-4">
-            <div class="col-12 col-md-8 col-lg-6">
+            <div id="video-container" class="position-relative">
+                <!-- Video Anzeige -->
+                <video id="video" class="w-100" autoplay></video>
+
+                <!-- Video Overlay -->
+                <div id="video-overlay"
+                    class="position-absolute w-100 h-100 d-flex justify-content-center align-items-center text-white">
+                    <p id="overlay-text" class="m-0" data-i18n="camera_preview"></p>
+                </div>
+
+                <!-- For the picture -->
+                <canvas id="canvas" class="position-absolute w-100"></canvas>
+            </div>
+
+            <div class="mx-auto" style="width: 85%; margin-top: 10px;">
+
+                <button id="weather-toggle-button" style="display:none;">
+                    <img src="https://api.iconify.design/mdi/weather-partly-cloudy.svg" alt="Wetter Icon">
+                </button>
+
                 <div id="weather-container" style="display:none;">
                     <div id="hourly-forecast"></div>
                 </div>
@@ -48,16 +72,27 @@
                         <img src="assets/images/robot-solid.svg" alt="Bot Icon" class="bot-icon mr-3" />
                         <div id="bubbleMessage" class="bubble" data-i18n="bot_greeting"></div>
                     </div>
-                    <button id="retryButton" class="btn btn-primary" style="display:none;" data-i18n="allow_access"></button>
+                    <button id="retryButton" class="btn btn-primary" style="display:none;"
+                        data-i18n="allow_access"></button>
                 </div>
             </div>
         </div>
     </div>
 
+    <div id="sharePopup" class="popup">
+        <div class="popup-content">
+            <h4>Teilen</h4>
+            <input type="text" id="shareUrl" readonly>
+            <button id="copyButton" class="btn btn-primary">Kopieren</button>
+            <button id="closePopup" class="btn btn-secondary">Schließen</button>
+        </div>
+    </div>
+
     <!-- Bootstrap und eigene Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="module" src="assets/js/app.js"></script>
 </body>
+
 </html>

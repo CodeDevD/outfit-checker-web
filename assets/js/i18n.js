@@ -33,8 +33,9 @@ class I18n {
   #updateTexts() {
     document.querySelectorAll('[data-i18n]').forEach((element) => {
       const key = element.getAttribute('data-i18n');
-      if (this.#translations[key]) {
-        element.textContent = this.#translations[key];
+      const translation = key.split('.').reduce((obj, keyPart) => obj && obj[keyPart], this.#translations);
+      if (translation) {
+        element.textContent = translation;
       }
     });
   }
@@ -50,33 +51,30 @@ class I18n {
     return text;
   }
 
+  async getAndInitLanguage() {
+    const savedLang = await i18n.getSavedLanguage();
+    await i18n.loadLanguage(savedLang);
+    return savedLang;
+  }
+
   // Returns the currently selected language
   getCurrentLanguage() {
     return this.#currentLanguage;
+  }
+
+  getSavedLanguage() {
+    const savedLang = localStorage.getItem('language');
+    const userLang = savedLang || navigator.language.slice(0, 2);
+    const lang = userLang === 'de' ? 'de' : 'en';
+    return lang
   }
 
   // Changes the language if it differs from the current language
   async changeLanguage(lang) {
     if (lang !== this.#currentLanguage) {
       await this.loadLanguage(lang);
+      localStorage.setItem('language', lang);
     }
-  }
-
-  // Initializes the language selection UI and loads the user's preferred language
-  async init(languageSelectElement) {
-    const savedLang = localStorage.getItem('language');
-    const userLang = savedLang || navigator.language.slice(0, 2);
-    const defaultLang = userLang === 'de' ? 'de' : 'en';
-
-    await this.loadLanguage(defaultLang);
-
-    languageSelectElement.value = defaultLang;
-
-    languageSelectElement.addEventListener('change', async (event) => {
-      const selectedLanguage = event.target.value;
-      localStorage.setItem('language', selectedLanguage);
-      await this.changeLanguage(selectedLanguage);
-    });
   }
 }
 

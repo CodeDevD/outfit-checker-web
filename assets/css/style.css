@@ -3,14 +3,85 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    width: 100%;
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
 }
 
-.container {
-    min-height: 100vh;
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    overflow-y: auto; 
+    padding-top: 70px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+/* Seitenmenü */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #007bff;
+    color: white;
+    transition: left 0.3s;
+    padding-top: 2rem;
+    z-index: 20;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu li {
+    padding: 1rem;
     text-align: center;
+}
+
+.side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+/* Share-Popup */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+#copyButton {
+    margin-top: 1rem;
+}
+
+/* Animation für Menü */
+.menu-open {
+    left: 0;
 }
 
 button {
@@ -23,12 +94,24 @@ button {
 
 #video-container {
     position: relative;
-    margin-top: 10px;
+    object-fit: contain;
+    width: 100%;
+    max-width: 75vh;
+    height: 50vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #video {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
     z-index: 1;
+    display: none;
 }
 
 #video-overlay {
@@ -38,24 +121,31 @@ button {
     z-index: 10; /* Über dem Video */
     background-color: rgba(0, 0, 0, 0.5); /* Halbdurchsichtiger Hintergrund */
     color: #fff;
+    z-index: 3;
+    display: flex;
+    justify-content: center;  /* Text horizontal zentrieren */
+    align-items: center;
 }
 
 #overlay-text {
     font-size: 1.5rem;
 }
 
+#canvas {
+    position: absolute;
+    object-fit: contain;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
+    z-index: 2; /* Canvas über dem Video anzeigen */
+    display: none;
+}
+
 #feedback {
     margin-top: 10px;
     font-size: 18px;
     color: #333;
-}
-
-/* Timer-Anzeige */
-#timer {
-    font-size: 2rem;
-    font-weight: bold;
-    color: red;
-    display: none;
 }
 
 /* Animation für die Bildaufnahme */
@@ -78,6 +168,7 @@ button {
 #weather-container {
     margin-top: 5px;
     margin-bottom: 5px;
+    margin: 0 auto;
 }
   
 #weather-toggle-button {
@@ -87,13 +178,14 @@ button {
     border-radius: 10px;
     width: 50px;
     height: 50px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, background-color 0.3s ease;
     border: none;
+    z-index: 10;
 }
 
 #weather-toggle-button:hover {
@@ -115,18 +207,13 @@ button {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Optional: Stellt den Schatten wieder her */
 }
 
-/* Wetter-Container */
-#weather-container {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
 /* Forecast-Container */
 #hourly-forecast {
     display: flex;
     gap: 8px;
     padding: 8px;
     overflow-x: auto;
+    justify-content: center;
 }
 
 /* Forecast-Element */
@@ -193,7 +280,9 @@ button {
     border-radius: 15px;
     padding: 15px 25px;
     margin-left: 10px;
+    min-width: 100px;
     max-width: 100%;
+    width: fit-content; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: bubbleAnimation 0.5s ease-out;
 }

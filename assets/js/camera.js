@@ -28,7 +28,7 @@ export class Camera {
     async #startCamera() {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-            this.videoOverlay.style.opacity = '0';
+            this.videoOverlay.style.setProperty("display", "none", "important");
             this.video.srcObject = stream;
             return stream;
         } catch (error) {
@@ -63,8 +63,15 @@ export class Camera {
             return null;
         }
 
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
+        const aspectRatio = video.videoWidth / video.videoHeight;
+        const containerHeight = canvas.parentElement.offsetHeight;
+        const canvasHeight = containerHeight;
+        const canvasWidth = canvasHeight * aspectRatio;
+    
+        // Setze die tatsächliche Größe des Canvas
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         return canvas.toDataURL('image/jpeg');
     }
@@ -81,9 +88,9 @@ export class Camera {
                 captureAnimation.style.display = 'none';
                 showBotFeedback(i18n.getText('imageTaken'));
 
-                video.style.display = 'none';
                 canvas.style.display = 'block';
-
+                video.style.display = 'none';
+                
                 this.#drawImageOnCanvas(imageData);
 
                 this.#stopCamera(stream);
@@ -96,9 +103,6 @@ export class Camera {
 
     #drawImageOnCanvas(imageData) {
         const context = canvas.getContext('2d');
-      
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
       
         const img = new Image();
         img.onload = function () {

@@ -1,28 +1,69 @@
 {
-    "title": "Outfit Checker",
-    "bot_greeting": "Oh Hallo, ich kann dein Outfit analysieren, klicke einfach auf den Button da oben und ich mache ein Foto von dir,",
-    "capture_button": "Outfit prüfen",
-    "analyzing": "Analyse läuft...",
-    "request_permissions": "Ich benötige deine Kamera- und Lokalisationsberechtigung. Bitte erteile die Berechtigungen, wenn danach gefragt wird. Ansonsten mache ich nicht weiter.",
-    "camera_preview": "Kameravorschau",
-    "countdown_message": "Mach dich Bereit! In {count}...",
-    "camera_permission_denied_response": "Hey! Ich möchte dich sehen, gib mir Zugriff auf deine Kamera, ich verspreche, ich werde dir nichts tun. Setze die Kameraberechtigung über deinen Browser bitte. ",
-    "camera_not_found_response": "Gibt es das heutzutage wirklich? Ein Gerät ohne Kamera! Ich habe Glück, mein Job ist hier erledigt.",
-    "camera_constrained_not_satisfied_response": "Hey, es gibt ein Problem mit der Kamera. Ich tue so, als ob ich dein Gerät nicht steuere, also überprüfe bitte deine Kameraeinstellungen.",
-    "allow_camera_access": "Erlaube Kamerazugriff",
-    "imageTaken": "Ich habe ein Bild von dir gemacht, analysiere jetzt dein Outfit...",
-    "geolocation_permission_denied_response": "Oh nein, nein, neiiiiin! So viel Arbeit und du hast mir nicht die Erlaubnis für deinen Standort gegeben. Wovor hast du Angst? Du kannst mir vertrauen! Bitte erteile mir die Erlaubnis für deinen Standort in deinem Browser.",
-    "outfit_description": "Das Outfit besteht aus:\n",
-    "outfit_item": "- {item} mit einer Wahrscheinlichkeit von {probability}%\n",
-    "weather_prompt": "Das aktuelle Wetter ist {weatherDescription} mit {temperature}°C. Ich trage: {outfit}. Passt mein Outfit für das Wetter?",
-    "analysis_in_progress": "Analyse läuft...",
-    "current_weather": "Aktuell",
-    "morning": "Morgens",
-    "noon": "Mittags",
-    "evening": "Abends",
-    "night": "Nachts",
-    "no_weather_data_available": "Keine Daten verfügbar",
-    "new_forecast_wait_for_assistant": "Einen Moment, Ich analysiere...",
-    "error": "Das ist kommisch, irgendwas ist schiefgelaufen. Vielleicht probiere es erneut, indem du die Webseite neu lädst?"
+  "title": "Outfit Checker",
+  "bot_greeting": "Oh Hallo, ich kann dein Outfit analysieren, klicke einfach auf den Button da oben und ich mache ein Foto von dir,",
+  "capture_button": "Outfit prüfen",
+  "analyzing": "Analyse läuft...",
+  "request_permissions": "Ich benötige deine Kamera- und Lokalisationsberechtigung. Bitte erteile die Berechtigungen, wenn danach gefragt wird. Ansonsten mache ich nicht weiter.",
+  "camera_preview": "Kameravorschau",
+  "countdown_message": "Mach dich Bereit! In {count}...",
+  "camera_permission_denied_response": "Hey! Ich möchte dich sehen, gib mir Zugriff auf deine Kamera, ich verspreche, ich werde dir nichts tun. Setze die Kameraberechtigung über deinen Browser bitte. ",
+  "camera_not_found_response": "Gibt es das heutzutage wirklich? Ein Gerät ohne Kamera! Ich habe Glück, mein Job ist hier erledigt.",
+  "camera_constrained_not_satisfied_response": "Hey, es gibt ein Problem mit der Kamera. Ich tue so, als ob ich dein Gerät nicht steuere, also überprüfe bitte deine Kameraeinstellungen.",
+  "allow_camera_access": "Erlaube Kamerazugriff",
+  "imageTaken": "Ich habe ein Bild von dir gemacht, analysiere jetzt dein Outfit...",
+  "geolocation_permission_denied_response": "Oh nein, nein, neiiiiin! So viel Arbeit und du hast mir nicht die Erlaubnis für deinen Standort gegeben. Wovor hast du Angst? Du kannst mir vertrauen! Bitte erteile mir die Erlaubnis für deinen Standort in deinem Browser.",
+  "outfit_description": "Das Outfit besteht aus:\n",
+  "outfit_item": "- {item} mit einer Wahrscheinlichkeit von {probability}%\n",
+  "weather_prompt": "Das aktuelle Wetter ist {weatherDescription} mit {temperature}°C. Ich trage: {outfit}. Passt mein Outfit für das Wetter?",
+  "analysis_in_progress": "Analyse läuft...",
+  "current_weather": "Aktuell",
+  "morning": "Morgens",
+  "noon": "Mittags",
+  "evening": "Abends",
+  "night": "Nachts",
+  "no_weather_data_available": "Keine Daten verfügbar",
+  "new_forecast_wait_for_assistant": "Einen Moment, Ich analysiere...",
+  "error": "Das ist kommisch, irgendwas ist schiefgelaufen. Vielleicht probiere es erneut, indem du die Webseite neu lädst?",
+  "about": {
+    "title": "Über das Projekt: Outfit Checker",
+    "description": "Das \"Outfit Checker\"-Projekt ist eine webbasierte Anwendung, die es Nutzern ermöglicht, ihre Outfits vor dem Verlassen des Hauses zu überprüfen. Das Ziel des Projekts ist es, eine intelligente Lösung zu schaffen, die den Nutzern hilft, basierend auf aktuellen Wetterdaten das passende Outfit zu wählen. Dabei wird ein Outfit-Analyzer verwendet, um aus einem Foto des Nutzers eine Analyse des getragenen Outfits vorzunehmen und Empfehlungen zu geben.",
+    "projectDescription": "Dieses Projekt ist Teil der MoCIoT (Mobile Computing and IoT)-Abgabe und demonstriert den Einsatz von modernen Webtechnologien, maschinellem Lernen und der Integration von APIs, um eine nützliche Anwendung zu entwickeln, die auf den Alltag der Nutzer zugeschnitten ist. Die Anwendung nutzt die Webkamera des Nutzers, um ein Bild zu erfassen, und verwendet Wetterdaten, um personalisierte Empfehlungen zu generieren.",
+    "team": {
+      "title": "Das Team",
+      "member": {
+        "name": "Daniel Kosin",
+        "role": "Projektleiter und Entwickler",
+        "description": "Daniel Kosin ist der Gründer und Hauptentwickler dieses Projekts."
+      }
+    },
+    "technologies": {
+      "title": "Technologien und Tools",
+      "description": "Für die Entwicklung dieses Projekts wurden folgende Technologien und Tools verwendet:",
+      "list": {
+        "htmlCssJs": "HTML, CSS und JavaScript: Grundlegende Webtechnologien für die Struktur, das Design und die Interaktivität der Anwendung.",
+        "bootstrap": "Bootstrap: Ein Framework für responsives Design und mobile Optimierung.",
+        "jquery": "jQuery: Eine JavaScript-Bibliothek, die die DOM-Manipulation und Ereignisbehandlung vereinfacht.",
+        "i18next": "i18next: Eine Bibliothek für die Implementierung der Mehrsprachigkeit.",
+        "webrtc": "WebRTC: Eine API zur Integration der Webkamera des Nutzers für die Bildaufnahme.",
+        "openWeatherMap": "OpenWeatherMap API: Für die Integration von Echtzeit-Wetterdaten zur Outfit-Empfehlung.",
+        "machineLearning": "Machine Learning: Für die Analyse von Outfit-Fotos und das Generieren von Empfehlungen."
+      }
+    },
+    "features": {
+      "title": "Funktionalitäten der Anwendung",
+      "list": {
+        "liveCapture": "Live-Bildaufnahme durch die Webkamera des Nutzers.",
+        "outfitAnalysis": "Automatische Analyse des Outfits basierend auf einem Foto des Nutzers.",
+        "weatherIntegration": "Integration von Echtzeit-Wetterdaten für personalisierte Outfit-Empfehlungen.",
+        "multilingualSupport": "Mehrsprachige Unterstützung für eine globale Nutzerbasis."
+      }
+    },
+    "future": {
+      "title": "Zukunftsperspektiven",
+      "description": "In Zukunft könnte das Projekt weiter ausgebaut werden, indem mehr Features hinzugefügt werden, wie zum Beispiel die Integration von Bekleidungsmarken, die den Nutzern maßgeschneiderte Outfit-Vorschläge bieten, oder eine Cloud-basierte Analyseplattform für eine noch genauere Outfit-Bewertung."
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Daniel Kosin. Alle Rechte vorbehalten."
   }
-  
+}
