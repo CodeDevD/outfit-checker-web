@@ -10,12 +10,12 @@ export async function testProxy() {
       });
   
       if (!response.ok) {
-        throw new Error(`HTTP Fehler! Status: ${response.status}`);
+        throw new Error(`HTTP Error! Status: ${response.status}`);
       }
   
       const data = await response.json();
-      console.log('Antwort vom Proxy:', data);
+      console.log('Response of proxy:', data);
     } catch (error) {
-      console.error('Fehler bei der Anfrage:', error);
+      console.error('Error during request:', error);
     }
   }

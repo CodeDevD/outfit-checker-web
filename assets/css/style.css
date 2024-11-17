@@ -33,27 +33,51 @@ html, body {
     background-color: #007bff;
     color: white;
     transition: left 0.3s;
-    padding-top: 2rem;
+    padding-top: 5rem;
     z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .side-menu ul {
     list-style: none;
     padding: 0;
+    width: 100%;
+    margin: 0;
 }
 
 .side-menu li {
-    padding: 1rem;
+    width: 100%;
     text-align: center;
 }
 
 .side-menu a {
-    color: white;
+    display: inline-block;
+    width: 80%;
+    padding: 12px 0;
+    margin: 2px 0;
+    background-color: #ffffff;
+    color: #007bff;
     text-decoration: none;
-    font-size: 1.2rem;
+    border: 2px solid #007bff; 
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-/* Share-Popup */
+.side-menu a:hover {
+    background-color: #007bff; 
+    color: white; 
+    border-color: #0056b3;
+    cursor: pointer;
+}
+
+.side-menu a:active {
+    transform: scale(0.98); 
+}
+
 .popup {
     position: fixed;
     top: 0;
@@ -64,6 +88,7 @@ html, body {
     display: none;
     justify-content: center;
     align-items: center;
+    z-index: 100;
 }
 
 .popup-content {
@@ -75,8 +100,39 @@ html, body {
     max-width: 400px;
 }
 
+.button-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.button-group button {
+    width: 100%;
+    height: 50px; 
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem; 
+    text-align: center;
+}
+
 #copyButton {
     margin-top: 1rem;
+}
+
+#whatsappButton {
+    background-color: #25D366; /* WhatsApp-Grün */
+    color: white;
+}
+
+#whatsappButton:hover {
+    background-color: #128C7E;
+}
+
+.fas, .fab {
+    margin-right: 8px;
 }
 
 /* Animation für Menü */
@@ -95,8 +151,7 @@ button {
 #video-container {
     position: relative;
     object-fit: contain;
-    width: 100%;
-    max-width: 75vh;
+    width: 80vh;
     height: 50vh;
     margin: auto;
     display: flex;

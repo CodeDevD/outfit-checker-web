@@ -24,6 +24,11 @@
   "no_weather_data_available": "No data available",
   "new_forecast_wait_for_assistant": "One Moment, I am analyzing...",
   "error": "This is unusual. Something broke. I'm not sure what just happened. Maybe refresh the website and try agein?",
+  "share": "Share",
+  "copy": "Copy",
+  "copied": "Copied!",
+  "close": "Close",
+  "about_btn_text": "About",
   "about": {
     "title": "About the Project: Outfit Checker",
     "description": "\"Outfit Checker\" is a web-based application that allows users to check their outfits before leaving the house. The goal of the project is to create an intelligent solution that helps users choose the right outfit based on current weather data. An outfit analyzer is used to take a photo of the user and analyze the outfit, providing recommendations.",

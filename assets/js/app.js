@@ -23,8 +23,10 @@ const $dropdownItems = $('.dropdown-item');
 const $shareLink = $('#shareLink');
 const $sharePopup = $('#sharePopup');
 const $shareUrl = $('#shareUrl');
+const $whatsappButton = $('#whatsappButton');
 const $copyButton = $('#copyButton');
 const $closePopup = $('#closePopup');
+const $outfitCheckerLink = $('#outfitCheckerLink');
 const $aboutLink = $('#aboutLink');
 const $sideMenu = $('#sideMenu');
 
@@ -35,6 +37,7 @@ let lastOutfitAnalysis;
 $(document).ready(async function () {
   initializeLanguageDropdown();
   initializeMenuToggle();
+  initializeGoToOutfitChecker();
   initializeSharePopup();
   initializeAboutPage();
 });
@@ -49,6 +52,15 @@ async function initializeLanguageDropdown() {
   });
 }
 
+function initializeGoToOutfitChecker() {
+  const outfitCheckerHtmlContent = $mainContent.html();
+  $outfitCheckerLink.click(function ()  {
+    $sideMenu.toggleClass('menu-open');
+    $mainContent.html(outfitCheckerHtmlContent);
+    i18n.loadLanguage(i18n.getCurrentLanguage());
+  })
+}
+
 function initializeMenuToggle() {
   $menuButton.click(function () {
     $sideMenu.toggleClass('menu-open');
@@ -58,23 +70,27 @@ function initializeMenuToggle() {
 function initializeSharePopup() {
   $shareLink.click(function () {
     $sideMenu.toggleClass('menu-open');
-    $sharePopup.fadeIn();
+    $sharePopup.css('display', 'flex');;
     $shareUrl.val(window.location.href);
   });
 
   $closePopup.click(function () {
-    $sharePopup.fadeOut();
+    $sharePopup.css('display', 'none');
   });
 
-  // URL kopieren
   $copyButton.click(function () {
     $shareUrl.select();
     document.execCommand('copy');
-    alert('URL kopiert!'); 
+    $copyButton.text(i18n.getText('copied')); 
+  });
+
+  $whatsappButton.click(function () {
+    const url = $shareUrl.val();
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(url)}`;
+    window.open(whatsappUrl, '_blank'); 
   });
 }
 
-// Funktion zum Anzeigen der "About"-Seite
 function initializeAboutPage() {
   $aboutLink.click(async function () {
       event.preventDefault();
@@ -89,8 +105,8 @@ function initializeAboutPage() {
           $mainContent.html(aboutContent);
           i18n.loadLanguage(i18n.getCurrentLanguage());
       } catch (error) {
-          console.error('Fehler beim Laden der About-Seite:', error);
-          $mainContent.innerHTML = '<p>Fehler beim Laden der About-Seite.</p>';
+          console.error('Error loading about page:', error);
+          $mainContent.innerHTML = '<p>Error loading about page.</p>';
       }
   });
 }
@@ -109,10 +125,15 @@ async function onForecastItemClicked(weatherData) {
   showBotFeedback(feedback);
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 $captureBtn.on('click', async () => {
   if (!(await checkPermissions())) {
-    showBotFeedback('Please grant permissions.');
-    return;
+    showBotFeedback(i18n.getText('request_permissions'));
+
+    await sleep(1000);;
   }
 
   const imageData = await camera.captureImageWithCountdown();

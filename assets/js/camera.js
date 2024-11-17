@@ -68,7 +68,6 @@ export class Camera {
         const canvasHeight = containerHeight;
         const canvasWidth = canvasHeight * aspectRatio;
     
-        // Setze die tatsächliche Größe des Canvas
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
 

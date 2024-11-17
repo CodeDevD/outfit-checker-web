@@ -130,7 +130,6 @@ class WeatherHandler {
     }
 }
 
-// Instantiate and use the WeatherService class
 const weatherHandler = new WeatherHandler(proxyUrl);
 
 export { weatherHandler };

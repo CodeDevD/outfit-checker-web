@@ -10,7 +10,7 @@ class OutfitAnalyzer {
     
   }
 
-  // Public method to analyze an outfit image
+  // Analyze an outfit image
   async analyzeOutfit(imageData) {
     if (isDevelopment) {
       console.log("Development mode detected: Using mock response.");
@@ -51,7 +51,7 @@ class OutfitAnalyzer {
     return data;
   }
 
-  // Private method to fetch fashion API data
+  // Fetch fashion API data
   async #fetchFashionApiData(imageData) {
     const response = await fetch(`${this.#proxyUrl}/proxyOutfit.js`, {
       method: 'POST',
@@ -68,7 +68,7 @@ class OutfitAnalyzer {
     return await response.json();
   }
 
-  // Private method to fetch response from Llama 3.2 API
+  // Fetch response from Llama 3.2 API
   async #fetchLlamaResponse(imageData) {
     const prompt = "What's in this image? Describe the outfit.";
 
@@ -91,7 +91,7 @@ class OutfitAnalyzer {
     return llamaAnswer;
   }
 
-  // Private method to parse mock response in development mode
+  // Parse mock response in development mode
   #parseMockResponse() {
     const mockResponse = {
       results: [
@@ -123,7 +123,7 @@ class OutfitAnalyzer {
     return this.#parseOutfitResult(mockResponse.results);
   }
 
-  // Private method to parse the outfit result
+  // Parse the outfit result
   #parseOutfitResult(results) {
     const classes = results[0]?.entities[0]?.classes || {};
 

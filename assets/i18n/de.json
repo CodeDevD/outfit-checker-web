@@ -24,6 +24,11 @@
   "no_weather_data_available": "Keine Daten verfügbar",
   "new_forecast_wait_for_assistant": "Einen Moment, Ich analysiere...",
   "error": "Das ist kommisch, irgendwas ist schiefgelaufen. Vielleicht probiere es erneut, indem du die Webseite neu lädst?",
+  "share": "Teilen",
+  "copy": "Kopieren",
+  "copied": "Kopiert!",
+  "close": "Schließen",
+  "about_btn_text": "Über das Projekt",
   "about": {
     "title": "Über das Projekt: Outfit Checker",
     "description": "Das \"Outfit Checker\"-Projekt ist eine webbasierte Anwendung, die es Nutzern ermöglicht, ihre Outfits vor dem Verlassen des Hauses zu überprüfen. Das Ziel des Projekts ist es, eine intelligente Lösung zu schaffen, die den Nutzern hilft, basierend auf aktuellen Wetterdaten das passende Outfit zu wählen. Dabei wird ein Outfit-Analyzer verwendet, um aus einem Foto des Nutzers eine Analyse des getragenen Outfits vorzunehmen und Empfehlungen zu geben.",

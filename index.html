@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Outfit Checker</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -15,7 +16,7 @@
             <button id="menuButton" class="navbar-toggler">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <span class="navbar-brand mx-auto">Outfit Checker</span>
+            <span class="navbar-brand mx-auto" data-i18n="title"></span>
             <div class="dropdown">
                 <button class="btn btn-light dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown">
                     DE
@@ -30,9 +31,9 @@
 
     <div id="sideMenu" class="side-menu">
         <ul>
-            <li><a href="#" id="outfitCheckerLink">Outfit Checker</a></li>
-            <li><a href="#" id="aboutLink">About</a></li>
-            <li><a href="#" id="shareLink">Share</a></li>
+            <li><a href="#" id="outfitCheckerLink" data-i18n="title"></a></li>
+            <li><a href="#" id="aboutLink" data-i18n="about_btn_text"></a></li>
+            <li><a href="#" id="shareLink" data-i18n="share"></a></li>
         </ul>
     </div>
 
@@ -81,10 +82,17 @@
 
     <div id="sharePopup" class="popup">
         <div class="popup-content">
-            <h4>Teilen</h4>
+            <h4 data-i18n="share"></h4>
             <input type="text" id="shareUrl" readonly>
-            <button id="copyButton" class="btn btn-primary">Kopieren</button>
-            <button id="closePopup" class="btn btn-secondary">Schließen</button>
+            <div class="button-group">
+                <button id="copyButton" class="btn btn-primary">
+                    <i class="fas fa-copy" data-i18n="copy"></i>
+                </button>
+                <button id="whatsappButton" class="btn btn-success">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+            </div>
+            <button id="closePopup" class="btn btn-secondary" data-i18n="close"></button>
         </div>
     </div>
 
