@@ -324,7 +324,7 @@ button {
     gap: 0.5rem; 
     padding: 0.5rem; 
     overflow-x: auto;
-    justify-content: center;
+    justify-content: flex-start;;
     scroll-padding: 0.5rem; 
 }
 
