@@ -10,8 +10,6 @@
 3. [Code Structure](#code-structure)
 4. [Installation](#installation)
 5. [Usage](#usage)
-6. [Future Improvements](#future-improvements)
-7. [License](#license)
 
 ---
 
