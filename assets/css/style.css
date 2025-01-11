@@ -9,6 +9,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.w-90 {
+    width: 90%;
+}
+
 .container-fluid {
     display: flex;
     flex-direction: column;
