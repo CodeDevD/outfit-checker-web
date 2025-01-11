@@ -3,7 +3,6 @@ class I18n {
   #currentLanguage = 'de';
   #i18nPath = 'assets/i18n/';
 
-  // Singleton pattern to ensure only one instance
   static instance;
 
   constructor() {

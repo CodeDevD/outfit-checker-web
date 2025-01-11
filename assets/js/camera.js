@@ -67,7 +67,7 @@ export class Camera {
         const containerHeight = canvas.parentElement.offsetHeight;
         const canvasHeight = containerHeight;
         const canvasWidth = canvasHeight * aspectRatio;
-    
+
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
 
@@ -89,7 +89,7 @@ export class Camera {
 
                 canvas.style.display = 'block';
                 video.style.display = 'none';
-                
+
                 this.#drawImageOnCanvas(imageData);
 
                 this.#stopCamera(stream);
@@ -102,13 +102,13 @@ export class Camera {
 
     #drawImageOnCanvas(imageData) {
         const context = canvas.getContext('2d');
-      
+
         const img = new Image();
         img.onload = function () {
-          context.drawImage(img, 0, 0, canvas.width, canvas.height);
+            context.drawImage(img, 0, 0, canvas.width, canvas.height);
         };
         img.src = imageData;
-      }
+    }
 
     #handleCameraError(error) {
         if (error.name === "NotAllowedError" || error.name === "PermissionDeniedError") {

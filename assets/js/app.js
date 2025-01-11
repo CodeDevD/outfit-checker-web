@@ -54,7 +54,7 @@ async function initializeLanguageDropdown() {
 
 function initializeGoToOutfitChecker() {
   const outfitCheckerHtmlContent = $mainContent.html();
-  $outfitCheckerLink.click(function ()  {
+  $outfitCheckerLink.click(function () {
     $sideMenu.toggleClass('menu-open');
     $mainContent.html(outfitCheckerHtmlContent);
     i18n.loadLanguage(i18n.getCurrentLanguage());
@@ -81,33 +81,33 @@ function initializeSharePopup() {
   $copyButton.click(function () {
     $shareUrl.select();
     document.execCommand('copy');
-    $copyButton.text(i18n.getText('copied')); 
+    $copyButton.text(i18n.getText('copied'));
   });
 
   $whatsappButton.click(function () {
     const url = $shareUrl.val();
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(url)}`;
-    window.open(whatsappUrl, '_blank'); 
+    window.open(whatsappUrl, '_blank');
   });
 }
 
 function initializeAboutPage() {
   $aboutLink.click(async function () {
-      event.preventDefault();
-      $sideMenu.toggleClass('menu-open');
+    event.preventDefault();
+    $sideMenu.toggleClass('menu-open');
 
-      try {
-          const response = await fetch('about.html');
-          if (!response.ok) {
-              throw new Error(`HTTP-Fehler: ${response.status}`);
-          }
-          const aboutContent = await response.text();
-          $mainContent.html(aboutContent);
-          i18n.loadLanguage(i18n.getCurrentLanguage());
-      } catch (error) {
-          console.error('Error loading about page:', error);
-          $mainContent.innerHTML = '<p>Error loading about page.</p>';
+    try {
+      const response = await fetch('about.html');
+      if (!response.ok) {
+        throw new Error(`HTTP-Fehler: ${response.status}`);
       }
+      const aboutContent = await response.text();
+      $mainContent.html(aboutContent);
+      i18n.loadLanguage(i18n.getCurrentLanguage());
+    } catch (error) {
+      console.error('Error loading about page:', error);
+      $mainContent.innerHTML = '<p>Error loading about page.</p>';
+    }
   });
 }
 

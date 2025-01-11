@@ -7,7 +7,7 @@ class OutfitAnalyzer {
   #proxyUrl = `${proxyUrl}/api`;
 
   constructor() {
-    
+
   }
 
   // Analyze an outfit image
@@ -46,7 +46,7 @@ class OutfitAnalyzer {
       },
       body: JSON.stringify({ prompt }),
     });
-  
+
     const data = await response.json();
     return data;
   }
